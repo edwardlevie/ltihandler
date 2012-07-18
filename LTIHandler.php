@@ -53,7 +53,7 @@ abstract class LTIHandler {
   }
 
   public function addConsumer($key, $secret) {
-    if (!is_string($key) || !is_string($secret)) {
+    if (!is_string($key) && !is_numeric($key) || !is_string($secret) && !is_numeric($secret)) {
       throw new Exception("Invalid consumer key or secret");
     }
     $this->consumers[$key] = $secret;
@@ -73,7 +73,7 @@ abstract class LTIHandler {
       return true;
     } catch (Exception $e) {
       if ($this->debug) {
-        error_log("Could not handle request: {$e->getMessage()}");
+        error_log("Could not verify request: {$e->getMessage()}");
       }
     }
     return false;

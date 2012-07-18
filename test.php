@@ -40,11 +40,11 @@ try {
   // Test addConsumer() //
   // Make sure we can provide good consumers
   $l->addConsumer('good_key1', 'good_secret1');
-  $l->addConsumer('good_key2', 'good_secret2');
+  $l->addConsumer(12345, 67890);
   // Make sure we can't provide a bad consumer
   try {
-    $l->addConsumer(null, null);
-    throw new Exception('Was able to provide a null consumer');
+    $l->addConsumer(array(), null);
+    throw new Exception('Was able to provide a bad consumer');
   } catch (Exception $e) {
     // Consume exception
   }
