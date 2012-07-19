@@ -1,4 +1,4 @@
 ltihandler
 ==========
 
-Simple base class for handling LTI requests as a consumer application
+Simple base class for handling LTI requests as a provider application
